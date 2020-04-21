@@ -11,6 +11,7 @@ int Judge(int n)
     {
         int a = 0;
         int mm = n;
+        int jjj = 0;
         while (n)
         {
             int temp = n % 10;
