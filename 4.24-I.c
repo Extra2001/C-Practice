@@ -2,16 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int nums[10015];
-
-int asc(const void *a, const void *b)
-{
-    return (*(int *)a - *(int *)b); //升序
-}
+int nums[100015];
 
 int comp(const void *a, const void *b)
 {
-    return *(int *)a - *(int *)b;
+    return (*(int *)a - *(int *)b);
 }
 
 int main()
@@ -20,38 +15,27 @@ int main()
     int n, target;
     while (~scanf("%d%d", &n, &target))
     {
+        memset(nums, 0, sizeof(nums));
         for (int i = 0; i < n; i++)
         {
             scanf("%d", &nums[i]);
         }
-        qsort(nums, n, sizeof(int), asc);
-        int *curr = nums;
-        // int nn = target / 2;
-        int cur = 0;
-        int l = 0, r = 0;
-        while (*curr < target)
+        qsort(nums, n, sizeof(int), comp);
+        int l = 0, r = n - 1;
+        int sum = nums[l] + nums[r];
+        while (sum != target)
         {
-            int to = target - *curr;
-            int *b = (int *)bsearch(&to, curr + 1, n - cur, sizeof(int), comp);
-            if (b != NULL)
+            sum = nums[l] + nums[r];
+            if (sum < target)
             {
-                if (abs(l - r) < abs(to - *curr))
-                {
-                    l = to;
-                    r = *curr;
-                }
+                l++;
             }
-            cur++;
-            curr++;
+            else if (sum > target)
+            {
+                r--;
+            }
         }
-        if (l > r)
-        {
-            int temp = l;
-            l = r;
-            r = temp;
-        }
-        printf("%d %d\n", l, r);
+        printf("%d %d\n", nums[l], nums[r]);
     }
-
     //fclose(stdin);
 }

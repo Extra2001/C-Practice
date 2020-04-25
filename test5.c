@@ -1,10 +1,25 @@
 #include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
 
-int main()
-{
-    int a[3][4] = {1};
-    int(*p)[4] = a;
-    printf("地址：%d, 依次：%d %d %d %d %d %d\n", &a[1][0], p + 1, a + 1, p[1], (*p)[1], a[1], *(p[1]));
-    char *weekday[] = {"Sun", "Mon", "Tus"};
-    printf("%s %c %d %d", weekday[1], *weekday[1], &weekday[1]);
+
+int rad[500000];
+
+int com(const void*a,const void *b){
+    return (*(int *)b - *(int *)a);
+}
+
+int main(){
+    freopen("./in3.txt", "w", stdout);
+    for (int i = 0; i < 500000;i++){
+        // rad[i] = rand() * 30518;
+        rad[i] = 1;
+    }
+    qsort(rad, 500000, sizeof(int), com);
+    for (int i = 0; i < 500000;i++){
+        printf("%d ", rad[i]);
+    }
+    fclose(stdout);
+    // printf("%lf", 1e9 / RAND_MAX);
+    // printf("%d", RAND_MAX);
 }
