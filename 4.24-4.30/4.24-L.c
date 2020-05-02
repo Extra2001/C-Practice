@@ -4,51 +4,48 @@ int dui[1000000];
 
 int main()
 {
-    // freopen("./in3.txt", "r", stdin);
-    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in3.txt", "r", stdin);
-
     int n, k;
     scanf("%d%d", &n, &k);
     int tmp;
-    int h = 0, e = 0;
+    int head = 0, end = 0;
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &tmp);
-        if (e - h == 0 && k > 0)
+        if (end - head == 0 && k > 0)
         {
-            dui[e] = tmp >> 1;
-            e++;
+            dui[end] = tmp >> 1;
+            end++;
             k--;
         }
         else if (k > 0)
         {
-            while (k > 0 && dui[h] > tmp)
+            while (k > 0 && dui[head] > tmp)
             {
-                dui[e] = dui[h] >> 1;
-                e++;
-                h++;
+                dui[end] = dui[head] >> 1;
+                end++;
+                head++;
                 k--;
             }
             if (k > 0)
             {
-                dui[e] = tmp >> 1;
-                e++;
+                dui[end] = tmp >> 1;
+                end++;
                 k--;
             }
             else
             {
-                dui[e] = tmp;
-                e++;
+                dui[end] = tmp;
+                end++;
             }
         }
         else
         {
-            dui[e] = tmp;
-            e++;
+            dui[end] = tmp;
+            end++;
         }
     }
     long long sum = 0;
-    for (int i = h; i < e; i++)
+    for (int i = head; i < end; i++)
     {
         sum += dui[i];
     }
