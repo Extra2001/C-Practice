@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,8 +68,15 @@ int main()
 void ReadLine(int i)
 {
     do
+    {
         gets(row[i].rowdata);
-    while (strlen(row[i].rowdata) == 0);
+        while (isspace(row[i].rowdata[strlen(row[i].rowdata) - 1]))
+        {
+            row[i].rowdata[strlen(row[i].rowdata) - 1] = '\0';
+            if (strlen(row[i].rowdata) == 0)
+                break;
+        }
+    } while (strlen(row[i].rowdata) == 0);
     char *p = row[i].rowdata;
     char tmp[200];
     for (int j = 0; j < propcount; j++)
@@ -90,7 +98,11 @@ void ReadLine(int i)
             sscanf(tm, "%d", &(row[i].col[j].data.DATE));
         }
         if (j != propcount - 1)
+        {
             p += strlen(tmp) + 1;
+            while (isspace(*p))
+                p++;
+        }
     }
 }
 

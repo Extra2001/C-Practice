@@ -1,9 +1,11 @@
 5 5
 orderID food num buyDate price
 INT VARCHAR INT DATE REAL
-1 appleappleappleappleappleappleappappleappleappleappleappleappleappappleappleappleappleappleappleapp 5 2020-1-09 34.55
+1 apple 5 2020-1-09 34.55
 2 banana 10 2020-01-9 129.98
 3 juice 1 2019-12-21 10.209
 4 apple 3 2020-01-09 32.2
 5 apple 2 2020-1-9 20.1
 buyDate 1
+food -1
+price 1
