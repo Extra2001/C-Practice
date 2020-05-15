@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,15 +22,72 @@ int getFactorial(int n);
 int SetBit(int Bit, int Number, int ToSet);
 int LoopBitLeft(int a, int n);
 
+int StartWith(char *base, char *delim)
+{
+    char *tmp = (char *)malloc(strlen(base) * sizeof(char));
+    char *backup = tmp;
+    strcpy(tmp, base);
+    tmp[strlen(delim)] = '\0';
+    if (strcmp(tmp, delim) == 0)
+    { 
+        free(backup);
+        return 1;
+    }
+    else
+    {
+        free(backup);
+        return 0;
+    }
+}
+
+int EndWith(char *base, char *delim)
+{
+    char *tmp = (char *)malloc(strlen(base) * sizeof(char));
+    char *backup = tmp;
+    strcpy(tmp, base);
+    tmp += strlen(base) - strlen(delim);
+    if (strcmp(tmp, delim) == 0)
+    {
+        free(backup);
+        return 1;
+    }
+    else
+    {
+        free(backup);
+        return 0;
+    }
+}
+
+int Trim(char *base)
+{
+    while (isspace(base[0]))
+        base[0] = '\0';
+    while (isspace(base[strlen(base) - 1]))
+        base[strlen(base) - 1] = '\0';
+    return strlen(base);
+}
+
+int TrimEnd(char *base)
+{
+    while (isspace(base[strlen(base) - 1]))
+        base[strlen(base) - 1] = '\0';
+    return strlen(base);
+}
+
+int TrimStart(char *base)
+{
+    while (isspace(base[0]))
+        base[0] = '\0';
+    return strlen(base);
+}
+
 int main()
 {
-    int a[] = {1, 4, 2, 6, 4, 8, 3, 3, 6};
-    BubbleSort(a, 9, 1);
-    LoopOutInt(a, 9);
-    printf("\n");
-    BubbleSort(a, 9, 0);
-    LoopOutInt(a, 9);
-    printf("%d", C(6, 3));
+    char a[50];
+    scanf("%s", a);
+    char b[50];
+    scanf("%s", b);
+    printf("%d", EndWith(a, b));
 }
 
 void LoopOutInt(int a[], int n)

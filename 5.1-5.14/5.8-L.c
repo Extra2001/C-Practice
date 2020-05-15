@@ -33,6 +33,7 @@ int cmp(const void *a, const void *b);
 
 int main()
 {
+    
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
     int r;
     scanf("%d%d", &r, &propcount);

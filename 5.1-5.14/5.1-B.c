@@ -8,7 +8,7 @@ char a[12][12] = {0};
 int main()
 {
     memset(a, 48, sizeof(a));
-    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
+
     for (int i = 1; i <= 10; i++)
     {
         gets(a[i] + 1);
