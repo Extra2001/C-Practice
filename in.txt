@@ -1,8 +1,2 @@
-6 1
-Nsga 2147483645
-geuf 29
-feu 100
-wefug 278
-fewfi 825
-fejhqu 9
-2147483647
+3
+3 1 2
