@@ -5,21 +5,21 @@
 #include <string.h>
 
 int TrimEnd(char *base);
-void OutInHEX(int num, int HEX);
+void OutInSystem(int num, int System);
 
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
     int n;
     scanf("%d", &n);
-    OutInHEX(n, 2);
-    OutInHEX(n, 8);
-    OutInHEX(n, 16);
+    OutInSystem(n, 2);
+    OutInSystem(n, 8);
+    OutInSystem(n, 16);
 
     // fclose(stdin);
 }
 
-void OutInHEX(int num, int HEX)
+void OutInSystem(int num, int System)
 {
     int m, i = 0;
     int b[1000];
@@ -30,9 +30,9 @@ void OutInHEX(int num, int HEX)
     }
     while (num)
     {
-        b[i] = num % HEX;
+        b[i] = num % System;
         i++;
-        num = num / HEX;
+        num = num / System;
     }
     for (i = i - 1; i >= 0; i--)
     {
