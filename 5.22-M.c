@@ -15,7 +15,6 @@ int main()
     OutInSystem(n, 2);
     OutInSystem(n, 8);
     OutInSystem(n, 16);
-
     // fclose(stdin);
 }
 
