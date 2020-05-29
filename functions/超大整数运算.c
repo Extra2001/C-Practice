@@ -3,6 +3,8 @@
 #include <string.h>
 #define INF 1000
 
+//警告！除法暂不成熟。谨慎使用。
+
 typedef struct bigint
 {
     char *num;  //指向长整数数组（序号0中保存着最高位）

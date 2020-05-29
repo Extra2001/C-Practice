@@ -4,21 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int TrimEnd(char *base);
-void OutInSys(int num, int System);
-
-int main()
-{
-    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-    int n;
-    scanf("%d", &n);
-    OutInSys(n, 2);
-    OutInSys(n, 8);
-    OutInSys(n, 16);
-    // fclose(stdin);
-}
-
-void OutInSys(int num, int System)
+void OutInSys(int num, int sys)
 {
     int m, i = 0;
     int b[1000];
@@ -29,9 +15,9 @@ void OutInSys(int num, int System)
     }
     while (num)
     {
-        b[i] = num % System;
+        b[i] = num % sys;
         i++;
-        num = num / System;
+        num = num / sys;
     }
     for (i = i - 1; i >= 0; i--)
     {
@@ -53,9 +39,26 @@ void OutInSys(int num, int System)
     printf("\n");
 }
 
-int TrimEnd(char *base)
+int get10Sys(char *num, int sys)
 {
-    while (isspace(base[strlen(base) - 1]))
-        base[strlen(base) - 1] = '\0';
-    return strlen(base);
+    char *p = num;
+    int len = strlen(p);
+    int temp, sum = 0;
+    while (len > 0)
+    {
+        char ss = toupper(*p);
+        if (ss >= '0' && ss <= '9')
+        {
+            temp = (ss - '0') * pow(sys, len - 1);
+            sum = sum + temp;
+        }
+        if (ss >= 'A' && ss <= 'F')
+        {
+            temp = (ss - 'A' + 10) * pow(sys, len - 1);
+            sum = sum + temp;
+        }
+        p++;
+        len--;
+    }
+    return sum;
 }
