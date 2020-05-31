@@ -6,25 +6,6 @@
 int a[1000015];
 int b[1000015];
 
-// int part(int low, int high)
-// {
-//     int cur = low;
-//     for (int i = low + 1; i <= high; i++)
-//     {
-//         if (num[i] < num[low])
-//         {
-//             int tmp = num[i];
-//             num[i] = num[cur + 1];
-//             num[cur + 1] = tmp;
-//             cur++;
-//         }
-//     }
-//     int tmp = num[low];
-//     num[low] = num[cur];
-//     num[cur] = tmp;
-//     return cur;
-// }
-
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
