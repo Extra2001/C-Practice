@@ -39,7 +39,7 @@ int GCD(int a, int b)
     if (b == 0)
         return a;
     int r = a % b;
-    return get_ans(b, r);
+    return GCD(b, r);
 }
 
 //判断是否是质数的独立版本

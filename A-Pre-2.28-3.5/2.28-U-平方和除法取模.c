@@ -6,6 +6,9 @@
 
 typedef long long LL;
 
+//取模的性质：(a + -*b) % mod = (a % mod + -*b % mod) % mod
+//a ^ b % p = ((a % p) ^ b) % p
+
 LL divMod(LL num, LL mod)
 {
     LL m = mod - 2;

@@ -26,3 +26,9 @@ int loopBitLeft(int Number, int n)
 {
     return ((Number >> (32 - n)) | (Number << n)) % (1 << 32);
 }
+
+//n为左移的位数
+int loopBitRight(int Number, int n)
+{
+    return ((Number << (32 - n)) | (Number >> n)) % (1 << 32);
+}
