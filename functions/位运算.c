@@ -13,7 +13,7 @@ int setBit(int Bit, int ToSet, int *Number)
         *Number = (*Number | i);
     else
         *Number = ((*Number) & (~i));
-    return Number;
+    return *Number;
 }
 
 int getBit(int Bit, int Number)

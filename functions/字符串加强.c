@@ -80,3 +80,14 @@ int isHuiwen(char *str, int len)
             return 0;
     return 1;
 }
+
+void sectionReverse(char *str, int l, int r)
+{
+    int len = r - l + 1;
+    for (int i = 0; i < len / 2; i++)
+    {
+        int tmp = str[l + i];
+        str[l + i] = str[r - i];
+        str[r - i] = tmp;
+    }
+}
