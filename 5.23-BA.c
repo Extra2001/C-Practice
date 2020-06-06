@@ -43,3 +43,4 @@ int TrimEndR(char *base)
         base[strlen(base) - 1] = '\0';
     return strlen(base);
 }
+//CESHI
