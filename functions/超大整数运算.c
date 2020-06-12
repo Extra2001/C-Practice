@@ -165,8 +165,15 @@ void BigIntAdd1(pBIGINT num1, pBIGINT num2, pBIGINT result)
 //减法函数
 void BigIntSub(pBIGINT num1, pBIGINT num2, pBIGINT result)
 {
-    num2->minus = -1 * num2->minus; //将减数的符号取反
-    BigIntAdd(num1, num2, result);  //调用加法函数
+    if (num1->minus == num2->minus) //同号
+    {
+        num2->minus = -1 * num2->minus; //将减数的符号取反
+        BigIntAdd(num1, num2, result);  //调用加法函数
+    }
+    else
+    {
+        BigIntSub1(num1, num2, result); //异号相减
+    }
 }
 
 //异号相减函数
@@ -249,7 +256,7 @@ void BigIntDiv(pBIGINT num1, pBIGINT num2, pBIGINT result, pBIGINT residue)
     int i, j, k, m; //k保存试商结果，m保存商的位数
     char t;
     result->minus = num1->minus * num2->minus; //商的符号
-    for (i = 0; i < residue->digit; i++) //将余数全部清0
+    for (i = 0; i < residue->digit; i++)       //将余数全部清0
         residue->num[i] = 0;
     m = 0;
     for (i = num1->digit - 1; i >= 0; i--)

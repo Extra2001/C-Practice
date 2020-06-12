@@ -13,7 +13,14 @@ int TrimEndR(char *base);
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-    
+    int a, b;
+    int n;
+    IN1(n);
+    for (int i = 0; i < n; i++)
+    {
+        IN2(a, b);
+        printf("%d\n", a + b);
+    }
     // fclose(stdin);
 }
 

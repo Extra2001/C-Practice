@@ -13,7 +13,15 @@ int TrimEndR(char *base);
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-
+    int n;
+    IN1(n);
+    for (int i = 0; i < n; i++)
+    {
+        int tmp;
+        IN1(tmp);
+        int a = 10 * sqrt(tmp);
+        printf("%d\n", a);
+    }
     // fclose(stdin);
 }
 
