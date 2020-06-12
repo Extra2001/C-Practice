@@ -126,6 +126,7 @@ int BigIntEqual(pBIGINT num1, pBIGINT num2) //比较绝对值大小
 
 void BigIntAdd(pBIGINT num1, pBIGINT num2, pBIGINT result)
 {
+    BIGINT n1 = *num1, n2 = *num2, res = *result;
     int i;
     i = BigIntEqual(num1, num2); //比较两数绝对值大小
     if (i < 0)                   //num1绝对值小于num2
@@ -169,8 +170,13 @@ void BigIntAdd1(pBIGINT num1, pBIGINT num2, pBIGINT result)
         carry = result->num[i] / 10;          //计算进位数据
         result->num[i] = result->num[i] % 10; //保留一位
     }
-    if (carry) //若最后还有进位
+    for (; carry; i++) //若最后还有进位
+    {
         result->num[i] = result->num[i] + carry;
+        carry = result->num[i] / 10; //计算进位数据
+        result->num[i] = result->num[i] % 10;
+    }
+    result->digit = num1->digit + 1;
     BigIntTrim(result); //整理结果
 }
 
@@ -202,8 +208,17 @@ void BigIntSub1(pBIGINT num1, pBIGINT num2, pBIGINT result)
         else
             borrow = 0;
     }
-    if (borrow == 1)
+    for (; borrow == 1; i++)
+    {
         result->num[i] = result->num[i] - borrow;
+        if (result->num[i] < 0) //若为负数
+        {
+            result->num[i] = 10 + result->num[i]; //向高位借位
+            borrow = 1;                           //设置借位数
+        }
+        else
+            borrow = 0;
+    }
     i = num1->digit;
     while (i > 0)
     {
@@ -254,8 +269,8 @@ void BigIntMul(pBIGINT num1, pBIGINT num2, pBIGINT result)
     BigIntTrim(result);
 }
 
-void BigIntDiv(pBIGINT num1, pBIGINT num2, pBIGINT result, pBIGINT residue)
 //除法函数
+void BigIntDiv(pBIGINT num1, pBIGINT num2, pBIGINT result, pBIGINT residue)
 {
     BIGINT quo1, residol, quo2;
     int i, j, k, m; //k保存试商结果，m保存商的位数
@@ -312,16 +327,19 @@ pBIGINT BigIntRead()
 
 int main()
 {
-    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
+    freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
     int n;
     IN1(n);
     for (int i = 0; i < n; i++)
     {
         pBIGINT p1 = BigIntRead(), p2 = BigIntRead(), res = BigIntInit();
-        if (p1->minus == p2->minus)
-            BigIntSub(p1, p2, res);
+        if (p2->minus == -1)
+            p2->minus = 1;
         else
-            BigIntSub1(p1, p2, res);
+            p2->minus = -1;
+        BigIntAdd(p1, p2, res);
+        BigIntPrint(res);
+        putchar('\n');
         if (res->minus == 1)
         {
             printf("xx\n");

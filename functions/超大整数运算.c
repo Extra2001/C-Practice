@@ -157,23 +157,22 @@ void BigIntAdd1(pBIGINT num1, pBIGINT num2, pBIGINT result)
         carry = result->num[i] / 10;          //计算进位数据
         result->num[i] = result->num[i] % 10; //保留一位
     }
-    if (carry) //若最后还有进位
+    for (; carry; i++) //若最后还有进位
+    {
         result->num[i] = result->num[i] + carry;
+        carry = result->num[i] / 10; //计算进位数据
+        result->num[i] = result->num[i] % 10;
+    }
+    result->digit = num1->digit + 1;
     BigIntTrim(result); //整理结果
 }
+
 
 //减法函数
 void BigIntSub(pBIGINT num1, pBIGINT num2, pBIGINT result)
 {
-    if (num1->minus == num2->minus) //同号
-    {
-        num2->minus = -1 * num2->minus; //将减数的符号取反
-        BigIntAdd(num1, num2, result);  //调用加法函数
-    }
-    else
-    {
-        BigIntSub1(num1, num2, result); //异号相减
-    }
+    num2->minus = -1 * num2->minus; //将减数的符号取反
+    BigIntAdd(num1, num2, result);  //调用加法函数
 }
 
 //异号相减函数
@@ -197,8 +196,17 @@ void BigIntSub1(pBIGINT num1, pBIGINT num2, pBIGINT result)
         else
             borrow = 0;
     }
-    if (borrow == 1)
+    for (; borrow == 1; i++)
+    {
         result->num[i] = result->num[i] - borrow;
+        if (result->num[i] < 0) //若为负数
+        {
+            result->num[i] = 10 + result->num[i]; //向高位借位
+            borrow = 1;                           //设置借位数
+        }
+        else
+            borrow = 0;
+    }
     i = num1->digit;
     while (i > 0)
     {
@@ -310,10 +318,8 @@ int main()
     while (1)
     {
         pBIGINT p1 = BigIntRead(), p2 = BigIntRead(), res = BigIntInit(), re = BigIntInit();
-        BigIntDiv(p1, p2, res, re);
+        BigIntAdd(p1, p2, res);
         BigIntPrint(res);
-        putchar('\n');
-        BigIntPrint(re);
         putchar('\n');
     }
 }
