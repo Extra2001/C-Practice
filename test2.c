@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define IN1(a) scanf("%d", &a);
+#define IN2(a, b) scanf("%d%d", &a, &b);
+#define IN3(a, b, c) scanf("%d%d%d", &a, &b, &c);
+
 #define INF 1000
 
 //警告！除法暂不成熟。谨慎使用。
@@ -167,7 +172,6 @@ void BigIntAdd1(pBIGINT num1, pBIGINT num2, pBIGINT result)
     BigIntTrim(result); //整理结果
 }
 
-
 //减法函数
 void BigIntSub(pBIGINT num1, pBIGINT num2, pBIGINT result)
 {
@@ -315,11 +319,44 @@ pBIGINT BigIntRead()
 
 int main()
 {
-    while (1)
+    int n;
+    IN1(n);
+    for (int i = 0; i < n; i++)
     {
-        pBIGINT p1 = BigIntRead(), p2 = BigIntRead(), res = BigIntInit(), re = BigIntInit();
-        BigIntAdd(p1, p2, res);
-        BigIntPrint(res);
-        putchar('\n');
+        pBIGINT p1 = BigIntRead(), p2 = BigIntRead();
+        if (p1->minus == p2->minus)
+        {
+            int cmp = BigIntEqual(p1, p2);
+            if (p1->minus == 1)
+            {
+
+                if (cmp == 1)
+                {
+                    printf("xx\n");
+                }
+                else
+                {
+                    printf("zd\n");
+                }
+            }
+            else
+            {
+                if (cmp == 1)
+                {
+                    printf("zd\n");
+                }
+                else
+                {
+                    printf("xx\n");
+                }
+            }
+        }
+        else
+        {
+            if (p1->minus == 1)
+                printf("xx\n");
+            else
+                printf("zd\n");
+        }
     }
 }
