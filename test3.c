@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 #define MAX 105
@@ -11,7 +12,7 @@ void print_result(double *matrix_result, int n);                                
 
 void main()
 {
-    freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
+    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
     double matrix_coeff[MAX][MAX] = {0}; //系数矩阵
     double(*p)[MAX] = matrix_coeff;
     double constant_vector[MAX] = {0}; //常向量
@@ -33,9 +34,6 @@ void main()
     // print_const(constant_vector, n);
     cal_substitution(p, constant_vector, matrix_result, n);
     print_result(matrix_result, n);
-    printf("\n");
-    system("gcc ./test2.c -o exe/test2.exe -Wall -g -O2 -static-libgcc -std=c11 -fexec-charset=GBK");
-    system("exe\\test2.exe");
 }
 
 

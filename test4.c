@@ -1,67 +1,40 @@
-
+#include <ctype.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define IN1(a) scanf("%d", &a);
+#define IN2(a, b) scanf("%d%d", &a, &b);
+#define IN3(a, b, c) scanf("%d%d%d", &a, &b, &c);
+
+int TrimEndR(char *base);
+
+int in[1005], sorted[1005];
+
+int cmp(const void *a, const void *b)
+{
+    int *e = (int *)a, *f = (int *)b;
+    return *e - *f;
+}
+
 int main()
 {
-    freopen("matrix.txt", "w", stdout);
-    int A[16][16], B[16][16], C[16][16];
-    memset(A, 0, sizeof(A));
-    memset(B, 0, sizeof(B));
-    memset(C, 0, sizeof(C));
-    for (int i = 0; i < 16; i++)
-    {
-        A[i][i] = 1;
-        B[i][i] = 1;
-    }
-    for (int i = 0; i < 5626596; i++)
-        rand();
-    int opa[10000], opb[10000], opc[10000];
-    for (int i = 0; i < 100; i++)
-    {
-        opa[i] = rand() % 16;
-        opb[i] = rand() % 16;
-        if (opa[i] == opb[i])
-            continue;
-        opc[i] = rand() % 11 - 5;
-        if (opc[i] == 0)
-            continue;
-        for (int j = 0; j < 16; j++)
-            A[opa[i]][j] += A[opb[i]][j] * opc[i];
-    }
-    for (int i = 0; i < 16; i++)
-    {
-        for (int j = 0; j < 16; j++)
-            printf("%d ", A[i][j]);
-        // printf("%d", rand());
-        printf("\n");
-    }
-    printf("=============================================\n");
-    for (int i = 99; i >= 0; i--)
-    {
-        if (opc[i] == 0 || opa[i] == opb[i])
-            continue;
-        for (int j = 0; j < 16; j++)
-            B[opa[i]][j] -= B[opb[i]][j] * opc[i];
-    }
-    for (int i = 0; i < 16; i++)
-    {
-        for (int j = 0; j < 16; j++)
-            printf("%d ", B[i][j]);
-        printf("\n");
-    }
-    printf("=============================================\n");
-    for (int i = 0; i < 16; i++)
-        for (int j = 0; j < 16; j++)
-            for (int k = 0; k < 16; k++)
-                C[i][j] += A[i][k] * B[k][j];
-    for (int i = 0; i < 16; i++)
-    {
-        for (int j = 0; j < 16; j++)
-            printf("%d ", C[i][j]);
-        printf("\n");
-    }
-    printf("=============================================\n");
-    fclose(stdout);
-    return 0;
+    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
+    int n;
+    IN1(n);
+    for (int i = 0; i < n; i++)
+
+        IN1(sorted[i]);
+    memcpy(in, sorted, n * sizeof(sorted[0]));
+    qsort(sorted, n, sizeof(sorted[0]), cmp);
+    
+    // fclose(stdin);
+}
+
+int TrimEndR(char *base)
+{
+    while (base[strlen(base) - 1] == '\r')
+        base[strlen(base) - 1] = '\0';
+    return strlen(base);
 }
