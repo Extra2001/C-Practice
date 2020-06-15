@@ -9,11 +9,40 @@
 #define IN3(a, b, c) scanf("%d%d%d", &a, &b, &c);
 
 int TrimEndR(char *base);
+char num[205];
 
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-
+    int n;
+    while (~scanf("%s%d", num, &n))
+    {
+        int spot;
+        for (int i = 0; i < strlen(num); i++)
+        {
+            if (num[i] == '.')
+            {
+                spot = i;
+                break;
+            }
+        }
+        int last = spot + n;
+        int carry = 0;
+        if (num[last + 1] >= '5')
+        {
+            if (num[last] == '9')
+            {
+                carry = 1;
+                num[last] = '0';
+            }
+            else
+                num[last]++;
+            while (carry)
+            {
+                
+            }
+        }
+    }
     // fclose(stdin);
 }
 

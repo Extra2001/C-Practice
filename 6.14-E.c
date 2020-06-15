@@ -10,10 +10,26 @@
 
 int TrimEndR(char *base);
 
+int t;
+int n, m;
+
+int getqun(int curn)
+{
+    int tmp1 = curn + m, tmp2 = curn - m;
+    if ((tmp1 & 1) || (tmp2 & 1) || tmp2 <= 0)
+        return 1;
+    return getqun(tmp1 / 2) + getqun(tmp2 / 2);
+}
+
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-
+    scanf("%d", &t);
+    for (int i = 0; i < t; i++)
+    {
+        scanf("%d%d", &n, &m);
+        printf("Case #%d: %d\n", i + 1, getqun(n));
+    }
     // fclose(stdin);
 }
 

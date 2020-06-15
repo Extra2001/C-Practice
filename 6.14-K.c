@@ -10,26 +10,10 @@
 
 int TrimEndR(char *base);
 
-char a[100055];
-
 int main()
 {
     // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-    gets(a);
-    char *p = a;
-    int cnt = 0;
-    while (p = strstr(p, "qaq"))
-    {
-        cnt++;
-        p += 2;
-    }
-    p = a;
-    while (p = strstr(p, "qwq"))
-    {
-        cnt++;
-        p += 2;
-    }
-    printf("%d", cnt);
+
     // fclose(stdin);
 }
 
