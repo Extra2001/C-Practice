@@ -46,6 +46,5 @@
         "limits": "cpp"
     },
     "code-runner.runInTerminal": true,
-    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
-    "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 4 }", // 格式化时调整include的顺序（按字母排序）
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe"
 }

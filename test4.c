@@ -1,87 +1,43 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-#define IN1(a) scanf("%d", &a);
-#define IN2(a, b) scanf("%d%d", &a, &b);
-#define IN3(a, b, c) scanf("%d%d%d", &a, &b, &c);
+typedef struct hh
+{
+    char data[32325];
+    int flag;
+} cp22;
 
-int TrimEndR(char *base);
-
-int map[1005][1005];
-long long judge[1005];
-
-int n;
 int main()
 {
-    // freopen("C:\\Users\\Lenovo\\Projects\\C_for_code\\in.txt", "r", stdin);
-    IN1(n);
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            IN1(map[i][j]);
-    int flag = 1;
-    // for (int i = 0; i < n; i++)
-    //     if (map[i][i] != 1)
-    //         flag = 0;
-    long long res;
-    if (flag)
+    cp22 *arr = malloc(sizeof(cp22) * 200000);
+    cp22 *arr1 = malloc(sizeof(cp22) * 200000);
+    cp22 *arr2 = malloc(sizeof(cp22) * 200000);
+    cp22 *arr3 = malloc(sizeof(cp22) * 200000);
+    cp22 *arr4 = malloc(sizeof(cp22) * 200000);
+    cp22 *arr5 = malloc(sizeof(cp22) * 200000);
+    cp22 *ar6r = malloc(sizeof(cp22) * 200000);
+    cp22 *arr7 = malloc(sizeof(cp22) * 200000);
+    cp22 *ar8r = malloc(sizeof(cp22) * 200000);
+    cp22 *arr9 = malloc(sizeof(cp22) * 200000);
+    printf("%d %d %d %d %d %d %d %d %d", arr, arr1, arr2, arr3, arr4, arr5, ar6r, arr7, ar8r, arr9);
+    int sum = 0;
+    for (int i = 0; i < 200000; i++)
     {
-        judge[1] = 1;
-        judge[2] = 2;
-        for (int i = 3; i < n + 1; i++)
-            judge[i] = ((judge[i - 1] + judge[i - 2]) * i) % 1000000007;
-        res = judge[n - 1] % 1000000007;
-    }
-    else
-        res = dfs(0);
-    printf("%lld", res);
-    // fclose(stdin);
-}
+        arr[i].flag = i;
+        arr1[i].flag = i;
+        arr2[i].flag = i;
+        arr3[i].flag = i;
+        arr4[i].flag = i;
+        // arr5[i].flag = i;
 
-int dfs(int row)
-{
-    if (row == n - 1)
-    {
-        int cnt = 0; //, flag = 1;
-        for (int i = 0; i < n; i++)
-        {
-            // flag = 1;
-            if (map[row][i] == 1 || judge[i] == 2)
-                continue;
-            // for (int j = 0; j < n; j++)
-            //     if (map[j][i] == 2)
-            //         flag = 0;
-            // if (flag)
-            cnt++;
-        }
-        return cnt;
-    }
-    int cnt = 0; //, flag = 1;
-    for (int i = 0; i < n; i++)
-    {
-        // flag = 1;
-        if (map[row][i] == 1 || judge[i] == 2)
-            continue;
-        // for (int j = 0; j < n; j++)
-        //     if (map[j][i] == 2)
-        //         flag = 0;
-        // if (flag)
-        // {
-        judge[i] = 2;
-        // map[row][i] = 2;
-        cnt += dfs(row + 1);
-        // map[row][i] = 0;
-        judge[i] = 0;
-        // }
-    }
-    return cnt;
-}
+        sum += arr[i].flag;
+        sum += arr1[i].flag;
+        sum += arr2[i].flag;
+        sum += arr3[i].flag;
+        sum += arr4[i].flag;
+        // sum += arr5[i].flag;
 
-int TrimEndR(char *base)
-{
-    while (base[strlen(base) - 1] == '\r')
-        base[strlen(base) - 1] = '\0';
-    return strlen(base);
+    }
+    getchar();
+    return 0;
 }
