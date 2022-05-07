@@ -43,9 +43,29 @@
         "sstream": "c",
         "streambuf": "c",
         "system_error": "c",
-        "limits": "cpp"
+        "limits": "cpp",
+        "limits.h": "c",
+        "climits": "c",
+        "float.h": "c",
+        "ctype.h": "c",
+        "ratio": "cpp",
+        "bitset": "c",
+        "chrono": "c",
+        "complex": "c",
+        "cstdlib": "c",
+        "functional": "c",
+        "fstream": "c",
+        "future": "c",
+        "iostream": "c",
+        "mutex": "c",
+        "new": "c",
+        "shared_mutex": "c",
+        "regex": "c",
+        "tuple": "c",
+        "typeinfo": "c",
+        "utility": "c",
+        "random": "c",
+        "valarray": "c"
     },
-    "code-runner.runInTerminal": true,
-    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
-    "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 4 }", // 格式化时调整include的顺序（按字母排序）
+    "code-runner.runInTerminal": true
 }

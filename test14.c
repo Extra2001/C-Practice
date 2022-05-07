@@ -13,7 +13,7 @@ int TrimEndR(char *base);
 int main()
 {
     // freopen("C:\\Users\\jingx\\Projects\\C_Practice\\in.txt", "r", stdin);
-
+    printf("%d", (char)11);
     // fclose(stdin);
 }
 
